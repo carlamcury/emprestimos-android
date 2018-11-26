@@ -11,12 +11,16 @@ import android.view.MenuItem;
 
 public class Emprestimos extends AppCompatActivity {
 
+    Button btinScan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emprestimos);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        btnScan = (Button) findViewById(R.id.btnScan);
+        final Activity activity = this;
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
