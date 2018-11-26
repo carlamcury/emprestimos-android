@@ -8,28 +8,33 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 public class Emprestimos extends AppCompatActivity {
 
-    Button btinScan;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emprestimos);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        btnScan = (Button) findViewById(R.id.btnScan);
-        final Activity activity = this;
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        // CONFIGURANDO BOTAO SCAN PARA ABRIR PLUGIN QRCODE-CAMERA
+        Button  buttonScan = (Button) findViewById(R.id.btnScan);
+        buttonScan.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View v) {
+
+                QrcodePlugin.openActivity(Emprestimos.this);
+                String qrcodeString = QrcodePlugin.getResult();
+
             }
         });
+
+
+
     }
 
     @Override
